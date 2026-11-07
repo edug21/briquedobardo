@@ -6,7 +6,7 @@ root = Path(__file__).parent
 data = json.loads((root / "data" / "cds.json").read_text(encoding="utf-8"))
 tpl = (root / "src" / "template.html").read_text(encoding="utf-8")
 import base64
-logo = "data:image/webp;base64," + base64.b64encode((root / "assets" / "logo.webp").read_bytes()).decode()
-html = tpl.replace("__DATA__", json.dumps(data, ensure_ascii=False)).replace("__LOGO__", logo)
+font = "data:font/woff2;base64," + base64.b64encode((root / "assets" / "PlakatFraktur.woff2").read_bytes()).decode()
+html = tpl.replace("__DATA__", json.dumps(data, ensure_ascii=False)).replace("__FONT__", font)
 (root / "index.html").write_text(html, encoding="utf-8")
 print(f"index.html gerado com {len(data)} itens")

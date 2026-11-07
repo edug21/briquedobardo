@@ -10,8 +10,8 @@ Versões diferentes do mesmo álbum aparecem como itens separados.
 index.html          site pronto (gerado; não editar à mão)
 src/template.html   layout, estilos e scripts
 data/cds.json       catálogo (138 itens)
-build.py            junta template + dados + logo em index.html
-assets/             logo (webp embutido no index.html; png original sem fundo)
+build.py            junta template + dados + fonte em index.html
+assets/             fonte Plakat Fraktur do título (woff2 embutido no index.html)
 ```
 
 ## Atualizar o catálogo

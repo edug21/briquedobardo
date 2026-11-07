@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"Plakat Fraktur";src:url(__FONT__) format("woff2");font-display:swap}
 :root{
   /* Um balcão de sebo: prateleira escura, etiquetas de preço em latão, capas geradas por banda. Layout: barra de filtros fixa + grade de "caixinhas" agrupadas por letra. */
   --bg:#15171b;
@@ -32,7 +33,7 @@ button,input,select{font:inherit;color:inherit}
 header.top{border-bottom:1px solid var(--line);padding:22px 0 18px}
 .top .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .brand h1{font:900 clamp(40px,7vw,68px)/.85 var(--display);letter-spacing:.01em;margin:0;text-transform:uppercase}
-.brand h1 .logo{display:block;width:clamp(240px,34vw,380px);height:auto}
+.brand h1{font-family:"Plakat Fraktur",var(--display);font-weight:400;text-transform:none;letter-spacing:0;font-size:clamp(44px,7vw,76px);line-height:1;color:var(--brass)}
 .brand p{margin:8px 0 0;color:var(--muted);font-size:14px}
 .stats{display:flex;gap:22px;flex-wrap:wrap}
 .stat b{display:block;font:800 30px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
@@ -155,7 +156,7 @@ footer.site-foot{padding-block:18px;border-top:1px solid var(--line);background:
 <header class="top">
   <div class="wrap">
     <div class="brand">
-      <h1><img class="logo" src="__LOGO__" alt="Brique do Bardo" width="900" height="387"></h1>
+      <h1>Brique do Bardo</h1>
       <p>Brique de CDs e DVDs usados. Estado do encarte e mídia descrito em cada item.</p>
     </div>
     <div class="stats" id="stats"></div>
