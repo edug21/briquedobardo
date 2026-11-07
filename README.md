@@ -1,4 +1,4 @@
-# Brique do Bardo — CDs
+# Brique do Bardo
 
 Site de venda de CDs, DVDs e importados usados. Catálogo com busca, filtro por formato e estilo, detalhes de cada item (estado do encarte e da mídia, prensagem, gravadora) e sacola que envia o pedido pelo WhatsApp.
 
@@ -10,7 +10,8 @@ Versões diferentes do mesmo álbum aparecem como itens separados.
 index.html          site pronto (gerado; não editar à mão)
 src/template.html   layout, estilos e scripts
 data/cds.json       catálogo (138 itens)
-build.py            junta template + dados em index.html
+build.py            junta template + dados + logo em index.html
+assets/             logo (webp embutido no index.html; png original sem fundo)
 ```
 
 ## Atualizar o catálogo
