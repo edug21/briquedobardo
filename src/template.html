@@ -76,7 +76,6 @@ main.wrap{padding-top:8px;padding-bottom:64px}
 .cover .an{font-size:12px;opacity:.85;margin-top:6px;position:relative;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .tags{position:absolute;top:10px;left:20px;display:flex;gap:4px;flex-wrap:wrap;max-width:calc(100% - 30px)}
 .tag{font:600 10px/1 var(--body);text-transform:uppercase;letter-spacing:.06em;padding:4px 6px;border-radius:3px;background:rgba(0,0,0,.55);color:#fff}
-.tag.jp{background:#c8102e}
 .tag.lac{background:var(--brass);color:#1a1408}
 .tag.res{background:#fff;color:#000}
 .meta{padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;flex:1}
@@ -220,8 +219,7 @@ function coverBg(d){const h=hue(d.banda);const h2=(h+40)%360;return `linear-grad
 function coverHTML(d,withTags=true){
   const tags=[];
   if(d.reservado) tags.push('<span class="tag res">Reservado</span>');
-  if(isJP(d)) tags.push('<span class="tag jp">Japão</span>');
-  else if(d.versao==='Importado') tags.push('<span class="tag">Importado</span>');
+  if(d.versao==='Importado') tags.push('<span class="tag">Importado</span>');
   if(/lacrado/i.test(d.obs)) tags.push('<span class="tag lac">Lacrado</span>');
   if(isVideo(d)) tags.push(`<span class="tag">${esc(d.tipo)}</span>`);
   if(discos[d.qtde]>1) tags.push(`<span class="tag">${discos[d.qtde]} discos</span>`);
