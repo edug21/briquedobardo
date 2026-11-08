@@ -39,7 +39,7 @@ header.top{border-bottom:1px solid var(--line);padding:22px 0 18px}
 .stats{display:flex;gap:22px;flex-wrap:wrap}
 .stat b{display:block;font:800 30px/1 var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
 .stat small{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
-.cartbtn{display:flex;align-items:center;gap:10px;background:var(--brass);color:#1a1408;border:0;border-radius:6px;padding:10px 16px;font-weight:600;cursor:pointer}
+.cartbtn{display:flex;align-items:center;gap:10px;margin-left:auto;padding-block:9px;background:var(--brass);color:#1a1408;border:0;border-radius:6px;padding:10px 16px;font-weight:600;cursor:pointer}
 .cartbtn .n{background:#1a1408;color:var(--brass);border-radius:99px;min-width:24px;padding:0 7px;font:500 13px/24px var(--mono);text-align:center}
 
 .filters{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -165,7 +165,6 @@ footer.site-foot{padding-block:18px;border-top:1px solid var(--line);background:
       <p>Brique de CDs e DVDs usados. Estado do encarte e mídia descrito em cada item.</p>
     </div>
     <div class="stats" id="stats"></div>
-    <button class="cartbtn" id="openCart" aria-label="Abrir sacola"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Sacola <span class="n" id="cartN">0</span></button>
   </div>
 </header>
 
@@ -175,6 +174,7 @@ footer.site-foot{padding-block:18px;border-top:1px solid var(--line);background:
       <label class="search" for="q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="Buscar banda, álbum ou gravadora" autocomplete="off"></label>
       <select id="fmt" aria-label="Formato"><option value="">Todos os formatos</option><option value="CD">CD</option><option value="Video">DVD / Blu-ray</option></select>
       <select id="sort" aria-label="Ordenar"><option value="az">Banda A–Z</option><option value="lo">Menor preço</option><option value="hi">Maior preço</option><option value="new">Mais recentes</option><option value="old">Mais antigos</option></select>
+      <button class="cartbtn" id="openCart" aria-label="Abrir sacola"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Sacola <span class="n" id="cartN">0</span></button>
     </div>
     <div class="chips" id="chips" role="group" aria-label="Estilo"></div>
   </div>
