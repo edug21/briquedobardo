@@ -1076,7 +1076,8 @@
     "obs": "",
     "preco": 200.0,
     "reservado": false,
-    "id": 54
+    "id": 54,
+    "capa": "assets/capas/dark-moor-shadowland.webp"
   },
   {
     "banda": "Dark Moor",
@@ -1095,7 +1096,8 @@
     "obs": "OBI / Encarte Japonês",
     "preco": 220.0,
     "reservado": false,
-    "id": 55
+    "id": 55,
+    "capa": "assets/capas/dark-moor-shadowland-japao.webp"
   },
   {
     "banda": "Delain",
@@ -1114,7 +1116,8 @@
     "obs": "OBI / Encarte Japonês",
     "preco": 70.0,
     "reservado": false,
-    "id": 56
+    "id": 56,
+    "capa": "assets/capas/delain-the-human-contradiction.webp"
   },
   {
     "banda": "Demons & Wizards",
@@ -1133,7 +1136,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 57
+    "id": 57,
+    "capa": "assets/capas/demons-wizards-demons-wizards.webp"
   },
   {
     "banda": "Dio",
@@ -1152,7 +1156,8 @@
     "obs": "Unofficial Release",
     "preco": 40.0,
     "reservado": false,
-    "id": 58
+    "id": 58,
+    "capa": "assets/capas/dio-the-legend-live-in-japan.webp"
   },
   {
     "banda": "Distraught",
@@ -1171,11 +1176,12 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 59
+    "id": 59,
+    "capa": "assets/capas/distraught-nervous-system.webp"
   },
   {
     "banda": "Domine",
-    "album": "Stormbringer Rules",
+    "album": "Stormbringer Ruler",
     "ano": 2001,
     "anoVersao": 2001,
     "estilo": "Power Metal",
@@ -1190,12 +1196,13 @@
     "obs": "",
     "preco": 80.0,
     "reservado": false,
-    "id": 60
+    "id": 60,
+    "capa": "assets/capas/domine-stormbringer-ruler.webp"
   },
   {
     "banda": "Domine",
     "album": "Emperor Of The Black Runes",
-    "ano": 2001,
+    "ano": 2004,
     "anoVersao": 2001,
     "estilo": "Power Metal",
     "pais": "Itália",
@@ -1209,7 +1216,8 @@
     "obs": "",
     "preco": 80.0,
     "reservado": false,
-    "id": 61
+    "id": 61,
+    "capa": "assets/capas/domine-emperor-of-the-black-runes.webp"
   },
   {
     "banda": "Drakkar",
@@ -1228,7 +1236,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 62
+    "id": 62,
+    "capa": "assets/capas/drakkar-quest-for-glory.webp"
   },
   {
     "banda": "Drakkar",
@@ -1247,7 +1256,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 63
+    "id": 63,
+    "capa": "assets/capas/drakkar-gemini.webp"
   },
   {
     "banda": "Dream Evil",
@@ -1266,7 +1276,8 @@
     "obs": "Sleeve",
     "preco": 80.0,
     "reservado": false,
-    "id": 64
+    "id": 64,
+    "capa": "assets/capas/dream-evil-evilized.webp"
   },
   {
     "banda": "Edguy",
