@@ -130,6 +130,7 @@ main.wrap{padding-top:8px;padding-bottom:72px}
 .add{display:grid;place-items:center;width:38px;height:34px;flex:none;cursor:pointer;color:var(--red-hi);background:rgba(201,48,44,.08);border:1px solid var(--red);transition:background-color .2s,color .2s,box-shadow .2s}
 .add:hover{background:rgba(201,48,44,.28);color:#fff;box-shadow:0 0 12px rgba(201,48,44,.35)}
 .add.in{background:var(--red);color:#fff;border-color:var(--red-hi)}
+.add.wide{width:auto;height:40px;display:inline-flex;gap:10px;padding:0 16px;font:500 12px/1 var(--display);letter-spacing:.16em;text-transform:uppercase}
 .add[disabled]{opacity:.35;cursor:default;box-shadow:none;background:none}
 .cover{position:relative;aspect-ratio:1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px 12px 12px 20px;overflow:hidden;color:#fff;border:1px solid rgba(184,154,116,.35)}
 .cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:rgba(0,0,0,.45)}
@@ -395,14 +396,15 @@ function openItem(id){
     ${d.obs?`<div class="obs">${esc(d.obs)}</div>`:''}
     ${others.length?`<div class="note">Também temos ${others.length===1?'outra versão':others.length+' outras versões'} deste álbum: ${others.map(o=>`<a href="#" data-go="${o.id}" style="color:var(--brass)">${esc(o.versao)} ${esc(o.origem)}, ${esc(o.tipo)} (${o.preco?BRL(o.preco):'sob consulta'})</a>`).join(' · ')}</div>`:''}
     <div class="mact">${priceHTML(d)}
-      <button class="primary" id="madd" ${d.reservado?'disabled':''}>${d.reservado?'Reservado':inCart?'Na sacola ✓':'Adicionar à sacola'}</button>
+      <button class="add wide${inCart?' in':''}" id="madd" ${d.reservado?'disabled':''} aria-pressed="${inCart}">${d.reservado?'Reservado':(inCart?ICON_OK+'Na sacola':ICON_BAG+'Adicionar à sacola')}</button>
     </div>
   </div>`;
   modal.classList.add('on');scrim.classList.add('on');
   document.getElementById('mx').onclick=closeAll;
   modal.querySelectorAll('[data-go]').forEach(a=>a.onclick=e=>{e.preventDefault();openItem(+a.dataset.go)});
   const add=document.getElementById('madd');
-  add.onclick=()=>{ if(!cart.includes(id)){cart.push(id);saveCart();updateCart();toast('Adicionado à sacola')} add.textContent='Na sacola ✓'; };
+  const paint=()=>{const inC=cart.includes(id);add.classList.toggle('in',inC);add.setAttribute('aria-pressed',inC);add.innerHTML=inC?ICON_OK+'Na sacola':ICON_BAG+'Adicionar à sacola'};
+  add.onclick=()=>{ if(cart.includes(id)){cart=cart.filter(x=>x!==id);saveCart();updateCart();toast('Removido da sacola')} else {cart.push(id);saveCart();updateCart();toast('Adicionado à sacola')} paint(); };
   add.focus();
 }
 function closeAll(){modal.classList.remove('on');drawer.classList.remove('on');scrim.classList.remove('on');if(lastFocus)lastFocus.focus()}
