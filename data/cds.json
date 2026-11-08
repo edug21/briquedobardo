@@ -596,7 +596,8 @@
     "obs": "Coletânea",
     "preco": 30.0,
     "reservado": false,
-    "id": 30
+    "id": 30,
+    "capa": "assets/capas/bad-religion-punk-rock-songs.webp"
   },
   {
     "banda": "Banda Eva",
@@ -915,7 +916,8 @@
     "obs": "",
     "preco": 160.0,
     "reservado": false,
-    "id": 46
+    "id": 46,
+    "capa": "assets/capas/caravellus-knowledge-machine.webp"
   },
   {
     "banda": "Circle II Circle",
@@ -934,7 +936,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 47
+    "id": 47,
+    "capa": "assets/capas/circle-ii-circle-watching-in-silence.webp"
   },
   {
     "banda": "Covenant",
@@ -953,7 +956,8 @@
     "obs": "",
     "preco": 10.0,
     "reservado": false,
-    "id": 48
+    "id": 48,
+    "capa": "assets/capas/covenant-skyshaper.webp"
   },
   {
     "banda": "Crashkill",
@@ -972,7 +976,8 @@
     "obs": "",
     "preco": 20.0,
     "reservado": false,
-    "id": 49
+    "id": 49,
+    "capa": "assets/capas/crashkill-consumed-by-biomechanics.webp"
   },
   {
     "banda": "Creed",
@@ -991,7 +996,8 @@
     "obs": "",
     "preco": 60.0,
     "reservado": false,
-    "id": 50
+    "id": 50,
+    "capa": "assets/capas/creed-full-circle.webp"
   },
   {
     "banda": "Cultus Funeris",
@@ -1010,7 +1016,8 @@
     "obs": "",
     "preco": 20.0,
     "reservado": false,
-    "id": 51
+    "id": 51,
+    "capa": "assets/capas/cultus-funeris-the-life-the-time-the-death.webp"
   },
   {
     "banda": "Cydonia",
@@ -1029,7 +1036,8 @@
     "obs": "",
     "preco": 40.0,
     "reservado": false,
-    "id": 52
+    "id": 52,
+    "capa": "assets/capas/cydonia-cydonia.webp"
   },
   {
     "banda": "Cyhra",
@@ -1048,7 +1056,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 53
+    "id": 53,
+    "capa": "assets/capas/cyhra-no-halos-in-hell.webp"
   },
   {
     "banda": "Dark Moor",
