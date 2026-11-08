@@ -84,11 +84,12 @@ header.top{padding:26px 0 0;position:relative}
 .search input::placeholder{color:#76695e;font-style:italic}
 .search svg{flex:none;color:var(--red-hi)}
 select{background:rgba(21,17,16,.8);border:1px solid var(--line);padding:11px 10px;font:500 11px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(21,17,16,.7);border:1px solid var(--line);color:var(--muted);padding:7px 12px;font:500 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.chips{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:1px}
+.chips::-webkit-scrollbar{display:none}
+.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(21,17,16,.7);border:1px solid var(--line);color:var(--muted);flex:none;white-space:nowrap;padding:5px 9px;font:500 10px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
 .chip:hover{border-color:var(--red);color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--red);border-color:var(--red-hi);color:#fff;box-shadow:0 0 14px rgba(201,48,44,.35)}
-.chip .c{font:400 13px/1 var(--body);letter-spacing:0;color:#7d6f63}
+.chip .c{font:400 12px/1 var(--body);letter-spacing:0;color:#7d6f63}
 .chip[aria-pressed="true"] .c{color:rgba(255,255,255,.8)}
 
 /* Grade */
@@ -109,6 +110,12 @@ main.wrap{padding-top:8px;padding-bottom:72px}
 .card:hover{transform:translateY(-3px);border-color:rgba(201,48,44,.7);box-shadow:0 0 0 1px rgba(201,48,44,.35),0 12px 30px rgba(0,0,0,.6),0 0 30px rgba(201,48,44,.15)}
 .card:hover::before,.card:hover::after{border-color:var(--red-hi)}
 .card.res{opacity:.5}
+.card .open{display:flex;flex-direction:column;flex:1;background:none;border:0;padding:0;margin:0;text-align:left;color:inherit;cursor:pointer;font:inherit}
+.card .bot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 4px 4px}
+.add{display:grid;place-items:center;width:38px;height:34px;flex:none;cursor:pointer;color:var(--red-hi);background:rgba(201,48,44,.08);border:1px solid var(--red);transition:background-color .2s,color .2s,box-shadow .2s}
+.add:hover{background:rgba(201,48,44,.28);color:#fff;box-shadow:0 0 12px rgba(201,48,44,.35)}
+.add.in{background:var(--red);color:#fff;border-color:var(--red-hi)}
+.add[disabled]{opacity:.35;cursor:default;box-shadow:none;background:none}
 .cover{position:relative;aspect-ratio:1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px 12px 12px 20px;overflow:hidden;color:#fff;border:1px solid rgba(184,154,116,.35)}
 .cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:rgba(0,0,0,.45)}
 .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.6));pointer-events:none}
@@ -123,7 +130,6 @@ main.wrap{padding-top:8px;padding-bottom:72px}
 .meta{padding:12px 4px 4px;display:flex;flex-direction:column;gap:4px;flex:1}
 .meta .t{font:500 19px/1.2 var(--body);color:var(--ink)}
 .meta .s{color:var(--muted);font-size:15px;line-height:1.35}
-.meta .bot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;gap:8px}
 .pr{font:600 18px/1 var(--display);color:var(--red-hi);font-variant-numeric:tabular-nums}
 .pr.q{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .cond{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);border:1px solid var(--line);padding:3px 8px}
@@ -196,7 +202,6 @@ footer.site-foot::before{content:"";position:absolute;left:50%;top:-4px;width:7p
   .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
   .cover .bn{font-size:17px}
   .meta .t{font-size:17px}
-  .cond span{font-size:0}
   .site-foot-in{flex-direction:column;align-items:flex-start}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -206,7 +211,6 @@ footer.site-foot::before{content:"";position:absolute;left:50%;top:-4px;width:7p
 <header class="top">
   <div class="wrap">
     <div class="brand">
-      <svg class="emblem" width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="32" cy="32" r="29" stroke="#c9302c" opacity=".8"/><path d="M32 3v6M32 55v6M3 32h6M55 32h6M11.5 11.5l4 4M48.5 48.5l4 4M52.5 11.5l-4 4M15.5 48.5l-4 4" stroke="#c9302c"/><ellipse cx="29" cy="40" rx="10" ry="12" transform="rotate(-25 29 40)"/><circle cx="29.5" cy="39" r="3"/><path d="M33.5 30 L45 13"/><path d="M43 10l5 3-2 3-5-3z"/><path d="M25 47l7-3"/></g></svg>
       <div>
         <h1>Brique do <span>Bardo</span></h1>
         <p>Brique de CDs e DVDs usados. Estado do encarte e mídia descrito em cada item.</p>
@@ -313,13 +317,23 @@ function filtered(){
   return r.sort(s);
 }
 function card(d){
-  return `<button class="card${d.reservado?' res':''}" data-id="${d.id}" aria-label="${esc(d.banda)} – ${esc(d.album)}">
+  const inCart=cart.includes(d.id);
+  return `<div class="card${d.reservado?' res':''}" data-id="${d.id}">
+    <button class="open" aria-label="Ver detalhes: ${esc(d.banda)} – ${esc(d.album)}">
     ${coverHTML(d)}
     <div class="meta">
       <div class="t">${esc(d.album)}</div>
       <div class="s">${esc(d.banda)} · ${d.ano??''}${d.anoVersao&&d.anoVersao!==d.ano?` (ed. ${d.anoVersao})`:''}<br>${esc(d.versao)} · ${esc(d.origem||'—')} · ${esc(d.tipo)}</div>
-      <div class="bot">${priceHTML(d)}<div class="cond" title="Encarte / Mídia"><span>${grade(d.encarte)}</span></div></div>
-    </div></button>`;
+    </div></button>
+    <div class="bot">${priceHTML(d)}<button class="add${inCart?' in':''}" data-add="${d.id}" ${d.reservado?'disabled':''} aria-pressed="${inCart}" aria-label="${inCart?'Na sacola':'Adicionar à sacola'}: ${esc(d.album)}" title="${d.reservado?'Reservado':inCart?'Na sacola':'Adicionar à sacola'}">${inCart?ICON_OK:ICON_BAG}</button></div>
+  </div>`;
+}
+const ICON_BAG='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/><path d="M12 11v5M9.5 13.5h5"/></svg>';
+const ICON_OK='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/><path d="m9 14 2 2 4-4"/></svg>';
+function syncCardButtons(){
+  document.querySelectorAll('.add[data-add]').forEach(b=>{const id=+b.dataset.add,inC=cart.includes(id),d=DATA.find(x=>x.id===id);
+    b.classList.toggle('in',inC);b.setAttribute('aria-pressed',inC);b.innerHTML=inC?ICON_OK:ICON_BAG;
+    b.title=d.reservado?'Reservado':inC?'Na sacola':'Adicionar à sacola';b.setAttribute('aria-label',(inC?'Na sacola':'Adicionar à sacola')+': '+d.album);});
 }
 function render(){
   const r=filtered();
@@ -341,7 +355,10 @@ function clearAll(){
 // Modal
 const modal=document.getElementById('modal'),scrim=document.getElementById('scrim'),drawer=document.getElementById('drawer');
 let lastFocus=null;
-document.getElementById('list').addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openItem(+c.dataset.id)});
+document.getElementById('list').addEventListener('click',e=>{
+  const add=e.target.closest('[data-add]');
+  if(add){const id=+add.dataset.add; if(cart.includes(id)){cart=cart.filter(x=>x!==id);saveCart();updateCart();toast('Removido da sacola')} else {cart.push(id);saveCart();updateCart();toast('Adicionado à sacola')} return}
+  const c=e.target.closest('.open');if(c)openItem(+c.closest('.card').dataset.id)});
 function openItem(id){
   const d=DATA.find(x=>x.id===id); lastFocus=document.activeElement;
   const inCart=cart.includes(id);
@@ -388,6 +405,7 @@ function orderText(){
 }
 function updateCart(){
   document.getElementById('cartN').textContent=cart.length;
+  if(typeof syncCardButtons==='function') syncCardButtons();
   const items=cart.map(id=>DATA.find(d=>d.id===id));
   const el=document.getElementById('items'),ft=document.getElementById('cartFoot');
   if(!items.length){el.innerHTML='<p class="note" style="padding:20px 0">Sua sacola está vazia. Toque em um disco para ver os detalhes e adicionar.</p>';ft.innerHTML='';return}
