@@ -434,7 +434,7 @@ function updateCart(){
     ${items.some(d=>!d.preco)?'<div class="note">Inclui item com preço sob consulta.</div>':''}
     <a class="cartbtn wa" href="https://wa.me/5551996696158?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Enviar pedido pelo WhatsApp</a>
     <button class="ghost" id="copy">Copiar lista do pedido</button>
-    <div class="note">Pedido enviado para o WhatsApp (51) 99669-6158. Frete e forma de pagamento são combinados na conversa.</div>`;
+    <div class="note">Pedido enviado para o WhatsApp (51) 99669-6158.<br>Frete e forma de pagamento são combinados na conversa.</div>`;
   document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(msg);toast('Lista copiada')}catch(e){toast('Não foi possível copiar. Use o botão do WhatsApp.')}};
 }
 document.getElementById('items').addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;cart=cart.filter(id=>id!==+b.dataset.rm);saveCart();updateCart()});
