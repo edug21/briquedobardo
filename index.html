@@ -48,10 +48,9 @@ button,input,select{font:inherit;color:inherit}
 .orn::after{transform:scaleX(-1)}
 
 /* Cabeçalho */
-header.top{padding:26px 0 0;position:relative}
+header.top{padding:26px 0 24px;position:relative;border-bottom:1px solid var(--line)}
+header.top::after{content:"";position:absolute;left:50%;bottom:-4px;width:7px;height:7px;background:var(--red);transform:translateX(-50%) rotate(45deg);z-index:6}
 .top .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.top .wrap.ornrow{display:block}
-.top .orn{margin-top:20px}
 .brand{display:flex;align-items:center;gap:18px}
 .banner{flex:none;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6))}
 .brand h1{margin:0;font:400 clamp(42px,6.5vw,72px)/1 var(--title);color:var(--ink);text-shadow:0 2px 0 #000,0 0 30px rgba(201,48,44,.18)}
@@ -248,7 +247,6 @@ footer.site-foot::before{content:"";position:absolute;left:50%;top:-4px;width:7p
       </div>
     </div>
   </div>
-  <div class="wrap ornrow"><div class="orn" aria-hidden="true"><svg width="26" height="12" viewBox="0 0 26 12"><path d="M13 0 L17 6 L13 12 L9 6 Z" fill="currentColor"/><path d="M0 6 H8 M18 6 H26" stroke="currentColor"/></svg></div></div>
 </header>
 
 <div class="filters">
