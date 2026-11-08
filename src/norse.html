@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brique do Bardo · Bifröst</title>
+<link rel="icon" type="image/svg+xml" href="__FAVICON__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Runic&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Plakat Fraktur";src:url(__FONT__) format("woff2");font-display:swap}
+:root{
+  /* Portão da Bifröst numa noite de tempestade: céu azul-aço, runas que brilham em azul gelo, botões violeta e filetes de arco-íris. Layout: herói com portal e título, três portais de raridade, barra de abas, grade de relíquias, painel de inspeção e bolsa. */
+  --void:#070a12;
+  --panel:#0b111d;
+  --panel-2:#101a2b;
+  --gold:#8fbfff;
+  --gold-hi:#dcebff;
+  --gold-lo:#2b3d5e;
+  --bone:#e9edf5;
+  --ash:#8f9bb3;
+  --violet:#6a3d96; --violet-hi:#a57ad9;
+  --bifrost:linear-gradient(90deg,#ff5f6d,#ffb15c,#ffe66d,#6dffb0,#5cc8ff,#8a7bff,#d36dff);
+  --r-comum:#8b93a3; --r-raro:#5aa2ff; --r-epico:#b07cff; --r-lenda:#ffd36b;
+  --title:"Plakat Fraktur","UnifrakturCook",serif;
+  --display:"Cinzel","Trajan Pro",Georgia,serif;
+  --body:"EB Garamond",Garamond,Georgia,serif;
+  --rune:"Noto Sans Runic","Segoe UI Historic",serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%,rgba(201,164,92,.16),transparent 70%),
+    radial-gradient(ellipse 120% 80% at 50% 120%,rgba(0,0,0,.9),transparent 60%),
+    var(--void);
+  background-attachment:fixed;
+  color:var(--bone);font:17px/1.45 var(--body);min-height:100%;
+}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+
+/* Moldura ornamental reutilizável */
+.frame{position:relative;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--gold-lo);box-shadow:inset 0 0 0 3px var(--panel),inset 0 0 0 4px rgba(201,164,92,.35),0 10px 30px rgba(0,0,0,.6)}
+.frame::before,.frame::after{content:"";position:absolute;width:10px;height:10px;background:var(--gold);transform:rotate(45deg);top:-6px;left:-6px;box-shadow:0 0 0 2px var(--void)}
+.frame::after{left:auto;right:-6px}
+.cb{position:absolute;inset:0;pointer-events:none}
+.frame>.cb::before,.frame>.cb::after{content:"";position:absolute;width:10px;height:10px;background:var(--gold);transform:rotate(45deg);bottom:-6px;left:-6px;box-shadow:0 0 0 2px var(--void)}
+.frame>.cb::after{left:auto;right:-6px}
+.divider{display:flex;align-items:center;gap:10px;color:var(--gold)}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-lo),var(--gold),var(--gold-lo),transparent)}
+.divider i{width:7px;height:7px;background:currentColor;transform:rotate(45deg);display:block}
+
+/* Cabeçalho */
+header.top{padding:34px 0 18px;text-align:center}
+.brand h1{font:400 clamp(46px,8vw,92px)/1 var(--title);margin:0;color:#fff;text-shadow:0 0 30px rgba(240,215,154,.25),0 2px 0 #000}
+.brand p{margin:8px auto 0;color:var(--ash);max-width:60ch;font-size:16px}
+.brand .divider{max-width:520px;margin:14px auto 0}
+.hud{display:flex;justify-content:center;align-items:stretch;gap:24px;flex-wrap:wrap;margin-top:22px}
+.stat{min-width:120px;padding:10px 18px 8px;text-align:center}
+.stat b{display:block;font:700 28px/1 var(--display);color:var(--gold-hi);font-variant-numeric:tabular-nums}
+.stat small{font:500 11px/1.6 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.bagbtn{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;color:var(--gold-hi);font:700 14px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
+.bagbtn:hover{background:linear-gradient(180deg,#2a231a,#1a160f)}
+.bagbtn .n{font:700 15px/26px var(--display);min-width:28px;height:28px;border:1px solid var(--gold);transform:rotate(45deg);display:grid;place-items:center}
+.bagbtn .n span{transform:rotate(-45deg)}
+
+/* Barra de comando */
+.cmd{position:sticky;top:0;z-index:5;padding:10px 0;background:linear-gradient(180deg,rgba(12,11,10,.97),rgba(12,11,10,.88));backdrop-filter:blur(6px);border-bottom:1px solid var(--gold-lo)}
+.cmd .wrap{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{flex:1 1 260px;display:flex;align-items:center;gap:8px;padding:0 12px;background:#0f0d0a;border:1px solid var(--gold-lo);box-shadow:inset 0 2px 6px rgba(0,0,0,.6)}
+.search input{flex:1;background:none;border:0;padding:10px 0;outline:none;min-width:0;color:var(--bone)}
+.search input::placeholder{color:#6f6656}
+.search svg{color:var(--gold)}
+select{background:#0f0d0a;border:1px solid var(--gold-lo);padding:10px;color:var(--bone);font-family:var(--display);font-size:13px;letter-spacing:.06em}
+.tabs{display:flex;gap:2px;flex-wrap:wrap}
+.tab{position:relative;background:none;border:0;border-bottom:2px solid transparent;color:var(--ash);font:500 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:10px 12px 9px;cursor:pointer}
+.tab:hover{color:var(--bone)}
+.tab[aria-pressed="true"]{color:var(--gold-hi);border-bottom-color:var(--gold);background:linear-gradient(0deg,rgba(201,164,92,.14),transparent)}
+.tab .c{font-family:var(--body);font-size:12px;opacity:.6;margin-left:5px;letter-spacing:0}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ash);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:9px;height:9px;transform:rotate(45deg);display:inline-block}
+
+/* Grade de slots */
+main.wrap{padding-top:6px;padding-bottom:64px}
+.count{color:var(--ash);font-size:14px;margin:16px 0 0;text-align:center;font-family:var(--display);letter-spacing:.1em;text-transform:uppercase}
+.letter{display:flex;align-items:center;gap:14px;margin:34px 0 16px}
+.letter h2{font:400 46px/1 var(--title);margin:0;color:var(--gold-hi);min-width:40px;text-align:center}
+.letter::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.letter small{order:2;color:var(--ash);font:500 12px var(--display);letter-spacing:.14em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(188px,1fr));gap:18px}
+
+.slot{--r:var(--r-comum);position:relative;display:flex;flex-direction:column;text-align:left;padding:6px;cursor:pointer;color:inherit;background:linear-gradient(180deg,#1b1712,#120f0b);border:1px solid #3a3122;box-shadow:inset 0 0 0 1px rgba(0,0,0,.6),0 6px 18px rgba(0,0,0,.5);transition:transform .15s,box-shadow .15s,border-color .15s}
+.slot:hover{transform:translateY(-3px);border-color:var(--r);box-shadow:inset 0 0 0 1px rgba(0,0,0,.6),0 0 0 1px var(--r),0 0 22px color-mix(in srgb,var(--r) 45%,transparent),0 10px 24px rgba(0,0,0,.6)}
+.slot.res{filter:grayscale(.8);opacity:.55}
+.slot[data-r="raro"]{--r:var(--r-raro)} .slot[data-r="epico"]{--r:var(--r-epico)} .slot[data-r="lenda"]{--r:var(--r-lenda)}
+.well{position:relative;aspect-ratio:1;border:1px solid var(--r);box-shadow:inset 0 0 24px color-mix(in srgb,var(--r) 35%,transparent);overflow:hidden}
+.cover{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:12px 12px 12px 20px;color:#fff;overflow:hidden}
+.cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:rgba(0,0,0,.4);box-shadow:inset -1px 0 rgba(255,255,255,.12)}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55));pointer-events:none}
+.disc{position:absolute;right:-28%;top:-28%;width:85%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(0,0,0,.55) 0 9%,rgba(255,255,255,.18) 9.5% 11%,rgba(255,255,255,.06) 11.5% 60%,rgba(255,255,255,.12) 61% 62%,transparent 63%)}
+.cover .bn{position:relative;z-index:1;font:700 21px/1 var(--display);text-transform:uppercase;letter-spacing:.02em;text-wrap:balance;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.cover .an{position:relative;z-index:1;font-size:13px;opacity:.9;margin-top:5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gem{position:absolute;top:8px;right:8px;z-index:2;width:12px;height:12px;transform:rotate(45deg);background:var(--r);box-shadow:0 0 10px var(--r),0 0 0 2px rgba(0,0,0,.7)}
+.badges{position:absolute;top:7px;left:16px;z-index:2;display:flex;gap:4px;flex-wrap:wrap;max-width:calc(100% - 40px)}
+.badge{font:700 10px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:4px 6px;background:rgba(10,8,6,.8);border:1px solid rgba(201,164,92,.5);color:var(--gold-hi)}
+.badge.res{background:var(--bone);color:#000;border-color:var(--bone)}
+.info{padding:9px 4px 3px;display:flex;flex-direction:column;gap:4px;flex:1}
+.info .rar{font:700 10px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--r)}
+.info .t{font-weight:700;line-height:1.2}
+.info .s{color:var(--ash);font-size:14px;line-height:1.3}
+.info .bot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:6px;border-top:1px solid #2c251a}
+.gold{display:inline-flex;align-items:center;gap:6px;font:700 17px/1 var(--display);color:var(--gold-hi);font-variant-numeric:tabular-nums}
+.gold::before{content:"";width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3c4,#e2b956 45%,#8a6420);box-shadow:0 0 0 1px #5a4214}
+.gold.q{font-size:12px;color:var(--ash);letter-spacing:.06em}
+.gold.q::before{display:none}
+.pips{display:flex;gap:3px} .pips i{width:7px;height:7px;transform:rotate(45deg);background:#3a3122}
+.pips i.on{background:var(--gold)}
+.empty{padding:60px 0;text-align:center;color:var(--ash)}
+
+/* Botões */
+.btn{cursor:pointer;font:700 13px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:13px 20px;border:1px solid var(--gold);color:#1a1206;background:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,#9c7c3c);box-shadow:inset 0 1px rgba(255,255,255,.5),0 0 0 3px var(--void),0 0 0 4px var(--gold-lo);text-decoration:none;text-align:center}
+.btn:hover{filter:brightness(1.08)}
+.btn[disabled]{filter:grayscale(1);opacity:.5;cursor:default}
+.btn.ghost{background:none;color:var(--gold-hi);box-shadow:none;border-color:var(--gold-lo)}
+
+/* Painel de inspeção */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:20;display:none}
+.scrim.on{display:block}
+.inspect{position:fixed;z-index:21;top:50%;left:50%;transform:translate(-50%,-50%);width:min(820px,calc(100% - 32px));max-height:calc(100% - 40px);overflow:auto;display:none;padding:22px}
+.inspect.on{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:24px}
+.inspect .well{aspect-ratio:1;--r:var(--r-comum)}
+.inspect[data-r="raro"] .well{--r:var(--r-raro)} .inspect[data-r="epico"] .well{--r:var(--r-epico)} .inspect[data-r="lenda"] .well{--r:var(--r-lenda)}
+.inspect .cover .bn{font-size:32px}
+.inspect .cover .an{font-size:15px;-webkit-line-clamp:4}
+.ibody{display:flex;flex-direction:column;gap:12px;min-width:0}
+.ibody .rar{font:700 12px/1 var(--display);letter-spacing:.2em;text-transform:uppercase}
+.ibody h3{margin:0;font:700 28px/1.1 var(--display);color:var(--bone);text-wrap:balance}
+.ibody .by{color:var(--ash);margin-top:-6px}
+.attrs{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0;font-size:15px}
+.attrs dt{font:500 12px/1.9 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--ash)}
+.attrs dd{margin:0}
+.meter{display:flex;align-items:center;gap:10px}
+.meter .bar{flex:1;max-width:160px;height:8px;background:#0c0a08;border:1px solid #3a3122;position:relative}
+.meter .bar span{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#8a6420,var(--gold-hi))}
+.lore{font-style:italic;color:#cfc3a8;border-left:2px solid var(--gold);padding:4px 0 4px 12px}
+.alt{font-size:14px;color:var(--ash)}
+.alt a{color:var(--gold-hi)}
+.iact{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:12px;border-top:1px solid #2c251a}
+.iact .gold{font-size:26px}
+.iact .gold::before{width:20px;height:20px}
+.x{position:absolute;top:10px;right:10px;width:34px;height:34px;background:var(--panel);border:1px solid var(--gold-lo);color:var(--gold-hi);cursor:pointer;font-size:18px;z-index:3}
+
+/* Bolsa */
+.bag{position:fixed;z-index:21;top:0;right:0;bottom:0;width:min(440px,100%);transform:translateX(105%);transition:transform .22s;display:flex;flex-direction:column;border-width:0 0 0 1px}
+.bag.on{transform:none}
+.bag header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px 10px}
+.bag h3{margin:0;font:400 40px/1 var(--title);color:#fff}
+.bag .divider{padding:0 20px}
+.items{flex:1;overflow:auto;padding:8px 20px}
+.it{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #2c251a}
+.it .sw{width:52px;height:52px;border:1px solid var(--r,var(--gold-lo));box-shadow:inset 0 0 12px rgba(0,0,0,.5)}
+.it .t{font-weight:700;line-height:1.2}
+.it .s{color:var(--ash);font-size:13px}
+.it .rm{background:none;border:0;color:var(--ash);cursor:pointer;font-size:13px;padding:0;text-decoration:underline}
+.bag footer{padding:16px 20px 20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--gold-lo)}
+.tot{display:flex;justify-content:space-between;align-items:center;font:500 13px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--ash)}
+.tot .gold{font-size:26px}
+.note{font-size:13px;color:var(--ash)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);padding:10px 18px;z-index:30;opacity:0;transition:opacity .2s;pointer-events:none;font:700 13px var(--display);letter-spacing:.1em;color:var(--gold-hi)}
+.toast.on{opacity:1}
+
+footer.site-foot{padding-block:18px;border-top:1px solid var(--gold-lo);background:var(--panel);color:var(--ash);font-size:14px}
+.site-foot-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+.sf-copy{margin:0}
+.sf-link{display:inline-flex;align-items:center;gap:8px;color:var(--ash);text-decoration:none;padding:6px 8px;margin:-6px -8px}
+.sf-link svg{width:13px;height:15px}
+.sf-link:hover{color:var(--gold-hi)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+@media (max-width:680px){
+  .inspect.on{grid-template-columns:1fr}
+  .inspect .well{max-width:260px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .cover .bn{font-size:17px}
+  .stat{min-width:0;flex:1 1 40%}
+  .site-foot-in{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== Bifröst ===== */
+body{background:var(--void);font-size:18px}
+.sky{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%,rgba(120,160,230,.28),transparent 70%),
+    radial-gradient(ellipse 60% 40% at 15% 25%,rgba(70,90,140,.35),transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 20%,rgba(70,90,140,.35),transparent 70%),
+    linear-gradient(180deg,#121a2c 0%,#0a0f1b 45%,#06080e 100%)}
+.sky svg{position:absolute;inset:0;width:100%;height:100%;opacity:.55;mix-blend-mode:screen;-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 92%);mask-image:linear-gradient(180deg,#000 30%,transparent 92%)}
+.sky .arc{position:absolute;width:900px;height:900px;border-radius:50%;opacity:.28;filter:blur(1.5px);
+  background:radial-gradient(circle,transparent 61%,#ff5f6d 61.5%,#ffb15c 62.5%,#ffe66d 63.5%,#6dffb0 64.5%,#5cc8ff 65.5%,#8a7bff 66.5%,transparent 67.5%)}
+.sky .arc.l{left:-520px;top:-260px}
+.sky .arc.r{right:-520px;top:-260px}
+
+.hero{position:relative;text-align:center;padding:24px 0 10px;overflow:hidden}
+.realm{font:500 13px/1 var(--display);letter-spacing:.32em;text-transform:uppercase;color:var(--ash);margin:0 0 6px}
+.portal{position:relative;width:min(560px,92vw);margin:0 auto;aspect-ratio:560/420}
+.portal svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.portal .runes{font:22px var(--rune);fill:#9fd0ff;letter-spacing:4px}
+.portal .glowline{animation:flicker 5s infinite}
+@keyframes flicker{0%,100%{opacity:.85}45%{opacity:1}47%{opacity:.55}49%{opacity:1}72%{opacity:.8}}
+.portal h1{position:absolute;left:0;right:0;top:52%;transform:translateY(-50%);margin:0;font:400 clamp(44px,8.5vw,88px)/1 var(--title);color:#fff;
+  text-shadow:0 0 18px rgba(170,210,255,.9),0 0 50px rgba(120,170,255,.6),0 3px 0 #0a0f1b}
+.portal .cta{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);white-space:nowrap}
+.hero p.lead{max-width:62ch;margin:6px auto 0;color:#c9d3e6;font-size:19px;font-style:italic}
+.bifrost-rule{height:2px;background:var(--bifrost);opacity:.7;max-width:460px;margin:18px auto 0;filter:saturate(.9)}
+
+.btn{color:#fff;background:linear-gradient(180deg,#8455b8,var(--violet) 55%,#4a2672);border:1px solid #c6a6f0;
+  box-shadow:inset 0 1px rgba(255,255,255,.35),0 0 18px rgba(165,122,217,.45);font-size:12px}
+.btn.ghost{background:rgba(10,15,27,.6);color:var(--gold-hi);border-color:rgba(220,235,255,.45);box-shadow:none}
+
+.realms{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px auto 4px}
+.gate{position:relative;cursor:pointer;text-align:left;padding:0;border:1px solid rgba(220,235,255,.18);background:#0a0f1b;color:var(--bone);overflow:hidden;transition:border-color .2s,transform .2s}
+.gate:hover,.gate[aria-pressed="true"]{border-color:rgba(220,235,255,.8);transform:translateY(-2px)}
+.gate .art{height:150px;position:relative;overflow:hidden}
+.gate .art::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 110%,var(--c),transparent 70%),radial-gradient(ellipse 40% 50% at 50% 40%,color-mix(in srgb,var(--c) 30%,transparent),transparent 70%),linear-gradient(180deg,#1a2338,#0a0f1b)}
+.gate .art::after{content:attr(data-rune);position:absolute;inset:0;display:grid;place-items:center;font:64px var(--rune);color:#fff;text-shadow:0 0 20px var(--c),0 0 40px var(--c)}
+.gate .lbl{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;font:700 12px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;border-top:1px solid rgba(220,235,255,.12)}
+.gate .lbl small{font:400 15px var(--body);letter-spacing:0;text-transform:none;color:var(--ash)}
+.gate .lbl b{font-weight:700}
+
+.hud{margin-top:22px}
+.stat b{color:#fff;text-shadow:0 0 12px rgba(143,191,255,.6)}
+.frame{background:linear-gradient(180deg,rgba(16,26,43,.92),rgba(11,17,29,.92));border-color:rgba(220,235,255,.22);box-shadow:inset 0 0 0 3px var(--panel),inset 0 0 0 4px rgba(143,191,255,.18),0 10px 30px rgba(0,0,0,.6)}
+.frame::before,.frame::after,.frame>.cb::before,.frame>.cb::after{background:var(--gold-hi);box-shadow:0 0 8px rgba(143,191,255,.9),0 0 0 2px var(--void)}
+.bagbtn{color:#fff}
+.bagbtn:hover{background:linear-gradient(180deg,#1a2740,#0e1626)}
+
+.cmd{background:linear-gradient(180deg,rgba(7,10,18,.96),rgba(7,10,18,.86));border-bottom:0}
+.cmd::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--bifrost);opacity:.55}
+.search,select{background:rgba(6,9,16,.8);border-color:#26344f}
+.tab[aria-pressed="true"]{color:#fff;border-bottom-color:var(--gold);background:linear-gradient(0deg,rgba(143,191,255,.14),transparent);text-shadow:0 0 10px rgba(143,191,255,.7)}
+.letter h2{color:#fff;text-shadow:0 0 14px rgba(143,191,255,.8)}
+.letter::after{background:linear-gradient(90deg,rgba(220,235,255,.7),transparent)}
+
+.slot{background:linear-gradient(180deg,#0f1828,#0a101c);border-color:#22304a}
+.info .bot{border-top-color:#1d2940}
+.gold{color:#fff}
+.gold::before{width:10px;height:10px;border-radius:0;transform:rotate(45deg);background:var(--gold-hi);box-shadow:0 0 8px var(--gold)}
+.pips i{background:#22304a}
+.pips i.on{background:var(--gold);box-shadow:0 0 5px rgba(143,191,255,.8)}
+.meter .bar{background:#060a12;border-color:#26344f}
+.meter .bar span{background:linear-gradient(90deg,#3f6fb3,var(--gold-hi))}
+.lore{border-left:0;padding-left:14px;position:relative;color:#c9d3e6}
+.lore::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#ff5f6d,#ffe66d,#6dffb0,#5cc8ff,#d36dff)}
+.alt a{color:var(--gold-hi)}
+.x{background:var(--panel);border-color:rgba(220,235,255,.4);color:#fff}
+.it .sw{box-shadow:inset 0 0 12px rgba(0,0,0,.5)}
+.bag h3{text-shadow:0 0 14px rgba(143,191,255,.7)}
+footer.site-foot{background:#06080e;border-top:0;position:relative}
+footer.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--bifrost);opacity:.5}
+.sf-link:hover{color:#fff}
+.chipclear{background:none;border:0;color:var(--gold-hi);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+@media (max-width:680px){.realms{grid-template-columns:1fr;gap:10px}.gate .art{height:90px}.portal .runes{font-size:16px}}
+@media (prefers-reduced-motion:reduce){.portal .glowline{animation:none}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <span class="arc l"></span><span class="arc r"></span>
+  <svg><filter id="clouds"><feTurbulence type="fractalNoise" baseFrequency=".004 .009" numOctaves="4" seed="7"/><feColorMatrix values="0 0 0 0 .35  0 0 0 0 .45  0 0 0 0 .65  0 0 0 -1.6 1.05"/></filter><rect width="100%" height="100%" filter="url(#clouds)"/></svg>
+</div>
+<header class="hero">
+  <div class="wrap">
+    <p class="realm">Porto Alegre · Brique de discos</p>
+    <div class="portal">
+      <svg viewBox="0 0 560 420" aria-hidden="true">
+        <defs>
+          <radialGradient id="pg" cx="50%" cy="62%" r="55%"><stop offset="0" stop-color="#eaf3ff" stop-opacity=".95"/><stop offset=".35" stop-color="#9cc4ff" stop-opacity=".55"/><stop offset=".7" stop-color="#6a3d96" stop-opacity=".25"/><stop offset="1" stop-color="#0a0f1b" stop-opacity="0"/></radialGradient>
+          <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <path id="arch" d="M120 410 L120 190 Q120 60 280 22 Q440 60 440 190 L440 410"/>
+        </defs>
+        <path d="M150 410 L150 196 Q150 92 280 58 Q410 92 410 196 L410 410 Z" fill="url(#pg)"/>
+        <path d="M280 70 C262 130 300 170 270 230 C245 280 300 320 282 410" stroke="#eaf3ff" stroke-width="2" fill="none" opacity=".6" class="glowline" filter="url(#glow)"/>
+        <path d="M150 410 L150 196 Q150 92 280 58 Q410 92 410 196 L410 410" fill="none" stroke="#cfe3ff" stroke-width="2" filter="url(#glow)" class="glowline"/>
+        <path d="M96 410 L96 186 Q96 40 280 0 Q464 40 464 186 L464 410" fill="none" stroke="#2b3d5e" stroke-width="22"/>
+        <text class="runes glowline" filter="url(#glow)"><textPath href="#arch" startOffset="2%">ᛒᚱᛁᚲᚢᛖ ᛞᚩ ᛒᚨᚱᛞᚩ ᛫ ᚲᛞᛋ ᛫ ᛞᚢᛞᛋ ᛫ ᛁᛗᛈᚩᚱᛏᚨᛞᚩᛋ ᛫ ᚾᚨᚲᛁᚩᚾᚨᛁᛋ ᛫ ᛒᚱᛁᚲᚢᛖ ᛞᚩ ᛒᚨᚱᛞᚩ ᛫ ᛗᛖᛏᚨᛚ ᛫</textPath></text>
+      </svg>
+      <h1>Brique do Bardo</h1>
+      <a class="btn cta" href="#acervo">Ver o acervo</a>
+    </div>
+    <p class="lead">Brique de CDs e DVDs usados. Estado do encarte e mídia descrito em cada item.</p>
+    <div class="bifrost-rule" aria-hidden="true"></div>
+    <div class="realms" id="realms">
+      <button class="gate" data-rar="lenda" aria-pressed="false"><div class="art" data-rune="ᛟ" style="--c:#ffd36b"></div><div class="lbl"><b>Lendários</b><small id="nLenda"></small><span aria-hidden="true">→</span></div></button>
+      <button class="gate" data-rar="epico" aria-pressed="false"><div class="art" data-rune="ᛉ" style="--c:#b07cff"></div><div class="lbl"><b>Prensagens japonesas</b><small id="nEpico"></small><span aria-hidden="true">→</span></div></button>
+      <button class="gate" data-rar="raro" aria-pressed="false"><div class="art" data-rune="ᚱ" style="--c:#5aa2ff"></div><div class="lbl"><b>Importados</b><small id="nRaro"></small><span aria-hidden="true">→</span></div></button>
+    </div>
+    <div class="hud" id="hud"></div>
+  </div>
+</header>
+
+<div class="cmd" id="acervo">
+  <div class="wrap">
+    <div class="row">
+      <label class="search" for="q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="Buscar banda, álbum ou gravadora" autocomplete="off"></label>
+      <select id="fmt" aria-label="Formato"><option value="">Todos os formatos</option><option value="CD">CD</option><option value="Video">DVD / Blu-ray</option></select>
+      <select id="sort" aria-label="Ordenar"><option value="az">Banda A–Z</option><option value="rar">Raridade</option><option value="lo">Menor preço</option><option value="hi">Maior preço</option><option value="new">Mais recentes</option><option value="old">Mais antigos</option></select>
+    </div>
+    <div class="tabs" id="tabs" role="group" aria-label="Estilo"></div>
+    <div class="legend" aria-label="Raridade">
+      <span><i style="background:var(--r-comum)"></i>Comum · nacional</span>
+      <span><i style="background:var(--r-raro)"></i>Raro · importado</span>
+      <span><i style="background:var(--r-epico)"></i>Épico · prensagem japonesa</span>
+      <span><i style="background:var(--r-lenda)"></i>Lendário · lacrado, limitado ou box</span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <p class="count" id="count"></p>
+  <div id="list"></div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot-in">
+    <p class="sf-copy">© 2026 Eduardo Gouvêa · Designed, built, and shipped with AI</p>
+    <a class="sf-link" href="https://www.eduardogouvea.com" target="_blank" rel="noopener"><svg viewBox="0 0 70 80" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 0V57.142H58.3304V68.5681H11.6637V62.8551H0V80H70V39.372H58.3363V45.7159H11.6637V34.2898H69.9941V0H0ZM58.3304 22.858H11.6637V11.4319H58.3304V22.858Z"/></svg><span>eduardogouvea.com</span><span class="sr-only"> (abre em nova aba)</span></a>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<div class="inspect frame" id="inspect" role="dialog" aria-modal="true" aria-labelledby="iTitle"></div>
+<aside class="bag frame" id="bag" aria-label="Bolsa">
+  <header><h3>Bolsa</h3><button class="btn ghost" id="closeBag">Fechar</button></header>
+  <div class="divider" aria-hidden="true"><i></i></div>
+  <div class="items" id="items"></div>
+  <footer id="bagFoot"></footer>
+</aside>
+<div class="toast frame" id="toast" role="status"></div>
+
+<script>
+const DATA = __DATA__;
+const WHATS = '5551996696158';
+
+const BRL = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const isJP = d => d.origem==='Japão' || /OBI|Japon/i.test(d.obs);
+const isVideo = d => d.tipo==='DVD' || d.tipo==='Blu-ray';
+const discos = {Simples:1,Duplo:2,Triplo:3};
+const RAR = {comum:['Comum',0],raro:['Raro',1],epico:['Épico',2],lenda:['Lendário',3]};
+const rarity = d => /lacrad|limitad|\bbox\b/i.test(d.obs+' '+d.album) ? 'lenda' : isJP(d) ? 'epico' : d.versao==='Importado' ? 'raro' : 'comum';
+const GRADE = {'Excelente':4,'Ótimo':3,'Bom':2,'Regular':1,'Ruim':1};
+
+const FAM = [
+  ['Power Metal',/power/i],['Heavy Metal',/heavy/i],['Thrash',/thrash/i],['Death',/death/i],
+  ['Black',/black/i],['Prog',/prog/i],['Folk',/folk/i],['Sinfônico',/symphonic/i],
+  ['Hard Rock',/hard rock|blues/i],['Nu / Alternativo',/nu metal|alternativo|metalcore|moderno/i],
+  ['Pop e outros',/pop|axé|hip hop|punk|rock & roll|^rock$|synth/i]
+];
+DATA.forEach(d=>{ d.fams=FAM.filter(([,r])=>r.test(d.estilo)).map(([n])=>n); if(!d.fams.length) d.fams=['Pop e outros']; d.r=rarity(d); });
+
+function hue(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h}
+function coverBg(d){const h=hue(d.banda);return `linear-gradient(150deg,hsl(${h} 28% 30%),hsl(${(h+30)%360} 35% 11%))`}
+function coverHTML(d,badges=true){
+  const b=[];
+  if(d.reservado) b.push('<span class="badge res">Reservado</span>');
+  if(isVideo(d)) b.push(`<span class="badge">${esc(d.tipo)}</span>`);
+  if(discos[d.qtde]>1) b.push(`<span class="badge">${discos[d.qtde]} discos</span>`);
+  return `<div class="cover" style="background:${coverBg(d)}"><span class="disc"></span>${badges?`<div class="badges">${b.join('')}</div>`:''}<div class="bn">${esc(d.banda)}</div><div class="an">${esc(d.album)}</div></div><span class="gem" aria-hidden="true"></span>`;
+}
+const gold = d => d.preco>0 ? `<span class="gold">${BRL(d.preco)}</span>` : `<span class="gold q">Sob consulta</span>`;
+const pips = g => `<span class="pips" title="Encarte: ${esc(g||'—')}">${[1,2,3,4].map(i=>`<i class="${i<=(GRADE[g]||0)?'on':''}"></i>`).join('')}</span>`;
+const meter = g => `<span class="meter"><span class="bar"><span style="width:${(GRADE[g]||0)*25}%"></span></span>${esc(g||'—')}</span>`;
+
+const st={q:'',fmt:'',sort:'az',fam:'',rar:''};
+let bag=[];
+try{bag=JSON.parse(localStorage.getItem('briqueCart')||'[]').filter(id=>DATA.some(d=>d.id===id))}catch(e){}
+const saveBag=()=>{try{localStorage.setItem('briqueCart',JSON.stringify(bag))}catch(e){}};
+
+// HUD
+(function(){
+  const nac=DATA.filter(d=>d.versao==='Nacional').length, imp=DATA.filter(d=>d.versao==='Importado').length;
+  const bands=new Set(DATA.map(d=>d.banda)).size;
+  document.getElementById('hud').innerHTML=[[DATA.length,'Itens'],[bands,'Bandas'],[nac,'Nacionais'],[imp,'Importados']].map(([n,l])=>`<div class="stat frame"><span class="cb"></span><b>${n}</b><small>${l}</small></div>`).join('')
+   +`<button class="bagbtn frame" id="openBag" aria-label="Abrir bolsa"><span class="cb"></span>Bolsa <span class="n"><span id="bagN">0</span></span></button>`;
+})();
+
+// Abas de estilo
+const tabs=document.getElementById('tabs');
+tabs.innerHTML=`<button class="tab" aria-pressed="true" data-f="">Todos<span class="c">${DATA.length}</span></button>`+FAM.map(([n])=>`<button class="tab" aria-pressed="false" data-f="${n}">${n}<span class="c">${DATA.filter(d=>d.fams.includes(n)).length}</span></button>`).join('');
+tabs.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;st.fam=b.dataset.f;tabs.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+document.getElementById('q').addEventListener('input',e=>{st.q=e.target.value;render()});
+document.getElementById('fmt').addEventListener('change',e=>{st.fmt=e.target.value;render()});
+document.getElementById('sort').addEventListener('change',e=>{st.sort=e.target.value;render()});
+
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+function filtered(){
+  const q=norm(st.q.trim());
+  const r=DATA.filter(d=>{
+    if(q && !norm([d.banda,d.album,d.gravadora,d.estilo,d.obs].join(' ')).includes(q)) return false;
+    if(st.fmt==='CD' && isVideo(d)) return false;
+    if(st.fmt==='Video' && !isVideo(d)) return false;
+    if(st.fam && !d.fams.includes(st.fam)) return false;
+    if(st.rar && d.r!==st.rar) return false;
+    return true;
+  });
+  const az=(a,b)=>a.banda.localeCompare(b.banda,'pt')||a.album.localeCompare(b.album,'pt')||a.id-b.id;
+  const s={az,rar:(a,b)=>RAR[b.r][1]-RAR[a.r][1]||az(a,b),lo:(a,b)=>(a.preco||1e9)-(b.preco||1e9)||az(a,b),hi:(a,b)=>b.preco-a.preco||az(a,b),new:(a,b)=>(b.ano||0)-(a.ano||0)||az(a,b),old:(a,b)=>(a.ano||9999)-(b.ano||9999)||az(a,b)}[st.sort];
+  return r.sort(s);
+}
+function slot(d){
+  return `<button class="slot${d.reservado?' res':''}" data-r="${d.r}" data-id="${d.id}" aria-label="${esc(d.banda)} – ${esc(d.album)}, ${RAR[d.r][0]}">
+    <div class="well">${coverHTML(d)}</div>
+    <div class="info">
+      <span class="rar">${RAR[d.r][0]}</span>
+      <span class="t">${esc(d.album)}</span>
+      <span class="s">${esc(d.banda)} · ${d.ano??''}<br>${esc(d.versao)} · ${esc(d.origem||'—')}</span>
+      <span class="bot">${gold(d)}${pips(d.encarte)}</span>
+    </div></button>`;
+}
+function render(){
+  const r=filtered();
+  const cnt=document.getElementById('count');
+  cnt.innerHTML=`${r.length} de ${DATA.length} itens à venda`+(st.rar?` · ${RAR[st.rar][0]}s · <button class="chipclear" id="rarclr">mostrar todos</button>`:'');
+  const rc=document.getElementById('rarclr'); if(rc) rc.onclick=()=>{st.rar='';document.querySelectorAll('.gate').forEach(g=>g.setAttribute('aria-pressed','false'));render()};
+  const list=document.getElementById('list');
+  if(!r.length){list.innerHTML=`<div class="empty">Nenhum item encontrado.<br><br><button class="btn ghost" id="clr">Limpar busca</button></div>`;document.getElementById('clr').onclick=clearAll;return}
+  if(st.sort==='az'){
+    const g={};r.forEach(d=>{const L=/[A-Z]/i.test(d.banda[0])?d.banda[0].toUpperCase():'#';(g[L]=g[L]||[]).push(d)});
+    list.innerHTML=Object.entries(g).map(([L,a])=>`<section><div class="letter"><h2>${L}</h2><small>${a.length} ${a.length>1?'itens':'item'}</small></div><div class="grid">${a.map(slot).join('')}</div></section>`).join('');
+  } else list.innerHTML=`<div class="grid" style="margin-top:24px">${r.map(slot).join('')}</div>`;
+}
+function clearAll(){
+  st.q='';st.fmt='';st.fam='';st.rar='';
+  document.querySelectorAll('.gate').forEach(g=>g.setAttribute('aria-pressed','false'));
+  document.getElementById('q').value='';document.getElementById('fmt').value='';
+  tabs.querySelectorAll('.tab').forEach((x,i)=>x.setAttribute('aria-pressed',i===0));
+  render();
+}
+
+// Inspeção
+const insp=document.getElementById('inspect'),scrim=document.getElementById('scrim'),bagEl=document.getElementById('bag');
+let lastFocus=null;
+document.getElementById('list').addEventListener('click',e=>{const c=e.target.closest('.slot');if(c)openItem(+c.dataset.id)});
+function openItem(id){
+  const d=DATA.find(x=>x.id===id); lastFocus=lastFocus||document.activeElement;
+  const inBag=bag.includes(id);
+  const others=DATA.filter(x=>x.id!==id&&x.banda===d.banda&&x.album===d.album);
+  insp.dataset.r=d.r;
+  insp.innerHTML=`<span class="cb"></span><button class="x" id="ix" aria-label="Fechar">×</button>
+  <div class="well">${coverHTML(d)}</div>
+  <div class="ibody">
+    <span class="rar" style="color:var(--r-${d.r==='lenda'?'lenda':d.r})">${RAR[d.r][0]}</span>
+    <h3 id="iTitle">${esc(d.album)}</h3><div class="by">${esc(d.banda)}</div>
+    <dl class="attrs">
+      <dt>Lançamento</dt><dd>${d.ano??'—'}${d.anoVersao&&d.anoVersao!==d.ano?` · esta edição de ${d.anoVersao}`:''}</dd>
+      <dt>Estilo</dt><dd>${esc(d.estilo)}</dd>
+      <dt>País</dt><dd>${esc(d.pais)}</dd>
+      <dt>Versão</dt><dd>${esc(d.versao)} · prensagem ${esc(d.origem||'não informada')}</dd>
+      <dt>Gravadora</dt><dd>${esc(d.gravadora)}</dd>
+      <dt>Formato</dt><dd>${esc(d.tipo)} · ${esc(d.qtde)}${discos[d.qtde]>1?` (${discos[d.qtde]} discos)`:''}</dd>
+      <dt>Encarte</dt><dd>${meter(d.encarte)}</dd>
+      <dt>Mídia</dt><dd>${meter(d.midia)}</dd>
+    </dl>
+    ${d.obs?`<div class="lore">${esc(d.obs)}</div>`:''}
+    ${others.length?`<div class="alt">Outra${others.length>1?'s':''} versão${others.length>1?'ões':''} à venda: ${others.map(o=>`<a href="#" data-go="${o.id}">${esc(o.versao)} ${esc(o.origem)}, ${esc(o.tipo)} (${o.preco?BRL(o.preco):'sob consulta'})</a>`).join(' · ')}</div>`:''}
+    <div class="iact">${gold(d)}<button class="btn" id="iadd" ${d.reservado?'disabled':''}>${d.reservado?'Reservado':inBag?'Na bolsa':'Pôr na bolsa'}</button></div>
+  </div>`;
+  insp.classList.add('on');scrim.classList.add('on');
+  document.getElementById('ix').onclick=closeAll;
+  insp.querySelectorAll('[data-go]').forEach(a=>a.onclick=e=>{e.preventDefault();openItem(+a.dataset.go)});
+  const add=document.getElementById('iadd');
+  add.onclick=()=>{if(!bag.includes(id)){bag.push(id);saveBag();updateBag();toast('Item guardado na bolsa')} add.textContent='Na bolsa'};
+  add.focus();
+}
+function closeAll(){insp.classList.remove('on');bagEl.classList.remove('on');scrim.classList.remove('on');if(lastFocus)lastFocus.focus();lastFocus=null}
+scrim.onclick=closeAll;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+
+// Bolsa
+document.getElementById('openBag').onclick=()=>{lastFocus=document.activeElement;insp.classList.remove('on');bagEl.classList.add('on');scrim.classList.add('on');document.getElementById('closeBag').focus()};
+document.getElementById('closeBag').onclick=closeAll;
+function orderText(){
+  const it=bag.map(id=>DATA.find(d=>d.id===id));
+  const tot=it.reduce((s,d)=>s+d.preco,0);
+  return `Olá! Tenho interesse nestes itens do Brique do Bardo:\n${it.map(d=>`• ${d.banda} – ${d.album} (${d.versao} ${d.origem||''}, ${d.tipo}) – ${d.preco?BRL(d.preco):'sob consulta'}`).join('\n')}\n\nTotal: ${BRL(tot)}${it.some(d=>!d.preco)?' + itens sob consulta':''}`;
+}
+function updateBag(){
+  document.getElementById('bagN').textContent=bag.length;
+  const it=bag.map(id=>DATA.find(d=>d.id===id));
+  const el=document.getElementById('items'),ft=document.getElementById('bagFoot');
+  if(!it.length){el.innerHTML='<p class="note" style="padding:20px 0">A bolsa está vazia. Escolha um disco para inspecionar e guardar.</p>';ft.innerHTML='';return}
+  el.innerHTML=it.map(d=>`<div class="it"><span class="sw" style="background:${coverBg(d)};--r:var(--r-${d.r})"></span><div><div class="t">${esc(d.album)}</div><div class="s">${esc(d.banda)} · ${RAR[d.r][0]}</div><button class="rm" data-rm="${d.id}">Remover</button></div>${gold(d)}</div>`).join('');
+  const tot=it.reduce((s,d)=>s+d.preco,0), msg=orderText();
+  ft.innerHTML=`<div class="tot"><span>${it.length} ${it.length>1?'itens':'item'}</span><span class="gold">${BRL(tot)}</span></div>
+   ${it.some(d=>!d.preco)?'<div class="note">Inclui item com preço sob consulta.</div>':''}
+   <a class="btn" href="https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Negociar pelo WhatsApp</a>
+   <button class="btn ghost" id="copy">Copiar lista do pedido</button>
+   <div class="note">Pedido enviado para o WhatsApp (51) 99669-6158. Frete e forma de pagamento são combinados na conversa.</div>`;
+  document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(msg);toast('Lista copiada')}catch(e){toast('Não foi possível copiar')}};
+}
+document.getElementById('items').addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;bag=bag.filter(id=>id!==+b.dataset.rm);saveBag();updateBag()});
+let tt;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1800)}
+
+['lenda','epico','raro'].forEach(k=>{const n=DATA.filter(d=>d.r===k).length;document.getElementById('n'+k[0].toUpperCase()+k.slice(1)).textContent=n+(n>1?' itens':' item')});
+document.getElementById('realms').addEventListener('click',e=>{const g=e.target.closest('.gate');if(!g)return;
+  st.rar = st.rar===g.dataset.rar ? '' : g.dataset.rar;
+  document.querySelectorAll('.gate').forEach(x=>x.setAttribute('aria-pressed',x.dataset.rar===st.rar));
+  render();document.getElementById('acervo').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
+render();updateBag();
+</script>
+</body>
+</html>

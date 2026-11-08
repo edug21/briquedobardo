@@ -21,7 +21,11 @@ assets/             fonte Plakat Fraktur do título (woff2 embutido no index.htm
 2. Rode `python3 build.py`.
 3. Faça commit de `data/cds.json` e `index.html`.
 
-Campos de cada item: `banda`, `album`, `ano`, `anoVersao`, `estilo`, `pais`, `versao` (Nacional/Importado), `origem`, `gravadora`, `tipo`, `qtde` (Simples/Duplo/Triplo), `encarte`, `midia`, `obs`, `preco` (número; `0` aparece como "Sob consulta"), `reservado` (`true` bloqueia a compra).
+Campos de cada item: `banda`, `album`, `ano`, `anoVersao`, `estilo`, `pais`, `versao` (Nacional/Importado), `origem`, `gravadora`, `tipo`, `qtde` (Simples/Duplo/Triplo), `encarte`, `midia`, `obs`, `preco` (número; `0` aparece como "Sob consulta"), `reservado` (`true` bloqueia a compra), `capa` (opcional, caminho da imagem).
+
+## Capas
+
+Salve a imagem em `assets/capas/` (quadrada, ~600 px, de preferência .webp) e informe o caminho no campo `capa` do item, por exemplo `"capa": "assets/capas/abydos-the-little-boys-heavy-mental-shadow-opera.webp"`. Itens sem `capa` usam a capa gerada.
 
 ## Publicar no GitHub Pages
 

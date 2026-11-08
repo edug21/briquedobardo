@@ -16,7 +16,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 1
+    "id": 1,
+    "capa": "assets/capas/abydos-the-little-boys-heavy-mental-shadow-opera.webp"
   },
   {
     "banda": "AC/DC",
