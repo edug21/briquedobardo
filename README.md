@@ -9,7 +9,7 @@ Versões diferentes do mesmo álbum aparecem como itens separados.
 ```
 index.html          site pronto (gerado; não editar à mão)
 src/template.html   layout, estilos e scripts
-data/cds.json       catálogo (138 itens)
+data/cds.json       catálogo
 favicon.svg         "B" da Plakat Fraktur (embutido no index.html)
 build.py            junta template + dados + fonte + favicon em index.html
 assets/             fonte Plakat Fraktur do título (woff2 embutido no index.html)
