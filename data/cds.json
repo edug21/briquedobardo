@@ -1799,7 +1799,7 @@
   },
   {
     "banda": "In Flames",
-    "album": "Sountrack To Your Scape",
+    "album": "Soundtrack To Your Escape",
     "ano": 2004,
     "anoVersao": 2004,
     "estilo": "Death Metal Melódico",
@@ -1815,7 +1815,7 @@
     "preco": 70.0,
     "reservado": false,
     "id": 91,
-    "capa": "assets/capas/in-flames-sountrack-to-your-scape.webp"
+    "capa": "assets/capas/in-flames-soundtrack-to-your-escape.webp"
   },
   {
     "banda": "In Flames",
@@ -2314,7 +2314,8 @@
     "obs": "Box - 2 CDs",
     "preco": 150.0,
     "reservado": false,
-    "id": 116
+    "id": 116,
+    "capa": "assets/capas/rage-unity-sounchaser.webp"
   },
   {
     "banda": "Rebellion",
@@ -2333,7 +2334,8 @@
     "obs": "",
     "preco": 40.0,
     "reservado": false,
-    "id": 117
+    "id": 117,
+    "capa": "assets/capas/rebellion-sagas-of-iceland-the-history-of-the-vikings-volume-i.webp"
   },
   {
     "banda": "Rebellion",
@@ -2352,7 +2354,8 @@
     "obs": "",
     "preco": 40.0,
     "reservado": false,
-    "id": 118
+    "id": 118,
+    "capa": "assets/capas/rebellion-miklagard-the-history-of-the-vikings-volume-ii.webp"
   },
   {
     "banda": "Rhapsody",
@@ -2371,7 +2374,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 119
+    "id": 119,
+    "capa": "assets/capas/rhapsody-legendary-tales.webp"
   },
   {
     "banda": "Rhapsody",
@@ -2390,7 +2394,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 120
+    "id": 120,
+    "capa": "assets/capas/rhapsody-power-of-the-dragonflame.webp"
   },
   {
     "banda": "Rhapsody",
@@ -2409,7 +2414,8 @@
     "obs": "Encarte com desgaste cantos / Mídia marcas superficiais.",
     "preco": 50.0,
     "reservado": false,
-    "id": 121
+    "id": 121,
+    "capa": "assets/capas/rhapsody-tales-from-the-emerald-sword-saga.webp"
   },
   {
     "banda": "Rhapsody",
@@ -2428,7 +2434,8 @@
     "obs": "Box, CD, Cards, Poster",
     "preco": 200.0,
     "reservado": false,
-    "id": 122
+    "id": 122,
+    "capa": "assets/capas/rhapsody-tales-from-the-emerald-sword-saga-box.webp"
   },
   {
     "banda": "Rhapsody Of Fire",
@@ -2447,7 +2454,8 @@
     "obs": "Digipack, Slipcase",
     "preco": 80.0,
     "reservado": false,
-    "id": 123
+    "id": 123,
+    "capa": "assets/capas/rhapsody-of-fire-visions-from-the-enchanted-lands.webp"
   },
   {
     "banda": "Rush",
@@ -2466,7 +2474,8 @@
     "obs": "Unofficial Release",
     "preco": 30.0,
     "reservado": false,
-    "id": 124
+    "id": 124,
+    "capa": "assets/capas/rush-exit-stage-left.webp"
   },
   {
     "banda": "Sacred Sinner",
@@ -2485,7 +2494,8 @@
     "obs": "",
     "preco": 40.0,
     "reservado": false,
-    "id": 125
+    "id": 125,
+    "capa": "assets/capas/sacred-sinner-sacred-sinner.webp"
   },
   {
     "banda": "Seven Deadly Sins",
@@ -2504,7 +2514,8 @@
     "obs": "",
     "preco": 10.0,
     "reservado": false,
-    "id": 126
+    "id": 126,
+    "capa": "assets/capas/seven-deadly-sins-welcome-radiation.webp"
   },
   {
     "banda": "Skylark",
@@ -2523,7 +2534,8 @@
     "obs": "",
     "preco": 50.0,
     "reservado": false,
-    "id": 127
+    "id": 127,
+    "capa": "assets/capas/skylark-divine-gates-part-2.webp"
   },
   {
     "banda": "Sonata Arctica",
@@ -2542,7 +2554,8 @@
     "obs": "Slipcase; Encarte Japonês; Encarte Fotos",
     "preco": 60.0,
     "reservado": false,
-    "id": 128
+    "id": 128,
+    "capa": "assets/capas/sonata-arctica-reckoning-night.webp"
   },
   {
     "banda": "System Of A Down",
@@ -2561,7 +2574,8 @@
     "obs": "",
     "preco": 20.0,
     "reservado": false,
-    "id": 129
+    "id": 129,
+    "capa": "assets/capas/system-of-a-down-toxicity.webp"
   },
   {
     "banda": "The Lonely Island",
@@ -2580,7 +2594,8 @@
     "obs": "",
     "preco": 50.0,
     "reservado": false,
-    "id": 130
+    "id": 130,
+    "capa": "assets/capas/the-lonely-island-the-wack-album.webp"
   },
   {
     "banda": "Turisas",
@@ -2599,7 +2614,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 131
+    "id": 131,
+    "capa": "assets/capas/turisas-stand-up-and-fight.webp"
   },
   {
     "banda": "Tyr",
@@ -2618,7 +2634,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 132
+    "id": 132,
+    "capa": "assets/capas/tyr-valkyrja.webp"
   },
   {
     "banda": "Tyr",
@@ -2637,7 +2654,8 @@
     "obs": "",
     "preco": 70.0,
     "reservado": false,
-    "id": 133
+    "id": 133,
+    "capa": "assets/capas/tyr-land.webp"
   },
   {
     "banda": "Unisonic",
@@ -2656,7 +2674,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 134
+    "id": 134,
+    "capa": "assets/capas/unisonic-unisonic.webp"
   },
   {
     "banda": "Vexillum",
@@ -2675,7 +2694,8 @@
     "obs": "Encarte colado",
     "preco": 60.0,
     "reservado": false,
-    "id": 135
+    "id": 135,
+    "capa": "assets/capas/vexillum-the-wandering-notes.webp"
   },
   {
     "banda": "Will Smith",
@@ -2694,7 +2714,8 @@
     "obs": "",
     "preco": 10.0,
     "reservado": false,
-    "id": 136
+    "id": 136,
+    "capa": "assets/capas/will-smith-big-willie-style.webp"
   },
   {
     "banda": "Witchery",
@@ -2713,7 +2734,8 @@
     "obs": "",
     "preco": 20.0,
     "reservado": false,
-    "id": 137
+    "id": 137,
+    "capa": "assets/capas/witchery-witchkrieg.webp"
   },
   {
     "banda": "Wizards",
@@ -2732,6 +2754,7 @@
     "obs": "",
     "preco": 80.0,
     "reservado": false,
-    "id": 138
+    "id": 138,
+    "capa": "assets/capas/wizards-beyond-the-sight.webp"
   }
 ]
