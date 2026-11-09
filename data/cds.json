@@ -1436,7 +1436,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 72
+    "id": 72,
+    "capa": "assets/capas/falconer-chapters-from-a-vale-forlorn.webp"
   },
   {
     "banda": "Fireway",
@@ -1455,7 +1456,8 @@
     "obs": "",
     "preco": 60.0,
     "reservado": false,
-    "id": 73
+    "id": 73,
+    "capa": "assets/capas/fireway-face-the-fire.webp"
   },
   {
     "banda": "Firewind",
@@ -1474,7 +1476,8 @@
     "obs": "",
     "preco": 20.0,
     "reservado": false,
-    "id": 74
+    "id": 74,
+    "capa": "assets/capas/firewind-the-premonition.webp"
   },
   {
     "banda": "Gamma Ray",
@@ -1493,7 +1496,8 @@
     "obs": "",
     "preco": 60.0,
     "reservado": false,
-    "id": 75
+    "id": 75,
+    "capa": "assets/capas/gamma-ray-heading-for-tomorrow.webp"
   },
   {
     "banda": "Gamma Ray",
@@ -1512,7 +1516,8 @@
     "obs": "",
     "preco": 60.0,
     "reservado": false,
-    "id": 76
+    "id": 76,
+    "capa": "assets/capas/gamma-ray-somewhere-out-in-space.webp"
   },
   {
     "banda": "Gamma Ray",
@@ -1550,7 +1555,8 @@
     "obs": "",
     "preco": 0.0,
     "reservado": false,
-    "id": 78
+    "id": 78,
+    "capa": "assets/capas/glory-opera-equilibrium.webp"
   },
   {
     "banda": "Grave Digger",
@@ -1588,7 +1594,8 @@
     "obs": "Lacrado",
     "preco": 30.0,
     "reservado": false,
-    "id": 80
+    "id": 80,
+    "capa": "assets/capas/hammerfall-threshold.webp"
   },
   {
     "banda": "Heaven Falls",
@@ -1607,7 +1614,8 @@
     "obs": "",
     "preco": 15.0,
     "reservado": false,
-    "id": 81
+    "id": 81,
+    "capa": "assets/capas/heaven-falls-ethereal-dreams.webp"
   },
   {
     "banda": "Heavenly",
@@ -1626,7 +1634,8 @@
     "obs": "",
     "preco": 40.0,
     "reservado": false,
-    "id": 82
+    "id": 82,
+    "capa": "assets/capas/heavenly-dust-to-dust.webp"
   },
   {
     "banda": "Helloween",
@@ -1645,7 +1654,8 @@
     "obs": "",
     "preco": 60.0,
     "reservado": false,
-    "id": 83
+    "id": 83,
+    "capa": "assets/capas/helloween-walls-of-jericho-helloween-ep-expanded-edition.webp"
   },
   {
     "banda": "Helloween",
@@ -1664,7 +1674,8 @@
     "obs": "",
     "preco": 220.0,
     "reservado": false,
-    "id": 84
+    "id": 84,
+    "capa": "assets/capas/helloween-keeper-of-the-seven-keys-part-1-part-2.webp"
   },
   {
     "banda": "Helloween",
@@ -1683,7 +1694,8 @@
     "obs": "",
     "preco": 70.0,
     "reservado": false,
-    "id": 85
+    "id": 85,
+    "capa": "assets/capas/helloween-the-best-the-rest-the-rare.webp"
   },
   {
     "banda": "Helloween",
@@ -1702,7 +1714,8 @@
     "obs": "Encarte Japonês",
     "preco": 80.0,
     "reservado": false,
-    "id": 86
+    "id": 86,
+    "capa": "assets/capas/helloween-the-time-of-the-oath.webp"
   },
   {
     "banda": "Helloween",
@@ -1721,7 +1734,8 @@
     "obs": "",
     "preco": 60.0,
     "reservado": false,
-    "id": 87
+    "id": 87,
+    "capa": "assets/capas/helloween-the-time-of-the-oath.webp"
   },
   {
     "banda": "Helloween",
@@ -1740,7 +1754,8 @@
     "obs": "",
     "preco": 80.0,
     "reservado": false,
-    "id": 88
+    "id": 88,
+    "capa": "assets/capas/helloween-high-live.webp"
   },
   {
     "banda": "Holy Fire",
@@ -1759,7 +1774,8 @@
     "obs": "Demo CDr",
     "preco": 100.0,
     "reservado": false,
-    "id": 89
+    "id": 89,
+    "capa": "assets/capas/holy-fire-spirits-looking-for.webp"
   },
   {
     "banda": "In Flames",
