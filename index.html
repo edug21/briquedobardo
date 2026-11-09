@@ -91,7 +91,10 @@ button.cartbtn .n{background:none;border:1px solid #c9a35c;color:#ecdcbc;font-si
 /* Barra de busca e filtros */
 .filters{position:sticky;top:0;z-index:5;background:rgba(11,9,9,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .filters::after{content:"";position:absolute;left:50%;bottom:-4px;width:7px;height:7px;background:var(--red);transform:translateX(-50%) rotate(45deg)}
-.filters .wrap{display:flex;flex-direction:column;gap:12px;padding-top:14px;padding-bottom:14px}
+.filters .wrap{display:flex;align-items:center;padding-top:14px;padding-bottom:14px}
+.fcol{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px}
+.minibanner{flex:none;width:0;height:auto;opacity:0;margin-right:0;transform:translateY(-8px);filter:drop-shadow(0 4px 8px rgba(0,0,0,.6));transition:width .3s,margin-right .3s,opacity .3s,transform .3s}
+.filters.stuck .minibanner{width:52px;margin-right:16px;opacity:1;transform:none}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .search{flex:1 1 260px;display:flex;align-items:center;gap:10px;background:rgba(21,17,16,.8);border:1px solid var(--line);padding:0 14px;transition:border-color .2s}
 .search:focus-within{border-color:var(--red)}
@@ -211,6 +214,9 @@ footer.site-foot::before{content:"";position:absolute;left:50%;top:-4px;width:7p
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 @media (max-width:640px){
+  .filters.stuck .minibanner{width:32px;margin-right:10px}
+  .minibanner{align-self:flex-start}
+  .row select{flex:1 1 120px;min-width:0;letter-spacing:.06em;padding:0 6px}
   .brand{gap:12px}
   .banner{width:46px;height:70px}
   .modal.on{grid-template-columns:1fr}
@@ -237,8 +243,10 @@ footer.site-foot::before{content:"";position:absolute;left:50%;top:-4px;width:7p
   </div>
 </header>
 
-<div class="filters">
+<div class="filters" id="filters">
   <div class="wrap">
+    <img class="minibanner" src="assets/bandeira.webp" alt="" width="70" height="106" aria-hidden="true">
+    <div class="fcol">
     <div class="row">
       <label class="search" for="q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="Buscar banda, álbum ou gravadora" autocomplete="off"></label>
       <select id="fmt" aria-label="Formato"><option value="">Todos os formatos</option><option value="CD">CD</option><option value="Video">DVD / Blu-ray</option></select>
@@ -246,6 +254,7 @@ footer.site-foot::before{content:"";position:absolute;left:50%;top:-4px;width:7p
       <button class="cartbtn" id="openCart" aria-label="Abrir sacola"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Sacola <span class="n" id="cartN">0</span></button>
     </div>
     <div class="chips" id="chips" role="group" aria-label="Estilo"></div>
+    </div>
   </div>
 </div>
 
@@ -440,6 +449,9 @@ function updateCart(){
 document.getElementById('items').addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;cart=cart.filter(id=>id!==+b.dataset.rm);saveCart();updateCart()});
 let tt;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1800)}
 
+(function(){const f=document.getElementById('filters'),h=document.querySelector('header.top');
+  if(!('IntersectionObserver' in window)||!h) return;
+  new IntersectionObserver(([e])=>f.classList.toggle('stuck',!e.isIntersecting),{threshold:0}).observe(h);})();
 render();updateCart();
 </script>
 </body>
