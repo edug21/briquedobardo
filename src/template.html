@@ -305,6 +305,7 @@ function coverHTML(d,withTags=true){
   if(d.reservado) tags.push('<span class="tag res">Reservado</span>');
   if(d.versao==='Importado') tags.push('<span class="tag">Importado</span>');
   if(/lacrado/i.test(d.obs)) tags.push('<span class="tag lac">Lacrado</span>');
+  if(/autograf/i.test(d.obs)) tags.push('<span class="tag lac">Autografado</span>');
   if(isVideo(d)) tags.push(`<span class="tag">${esc(d.tipo)}</span>`);
   if(discos[d.qtde]>1) tags.push(`<span class="tag">${discos[d.qtde]} discos</span>`);
   return `<div class="cover${d.capa?' img':''}" style="background:${coverBg(d)}" ${d.capa?`role="img" aria-label="Capa de ${esc(d.album)}"`:''}>${d.capa?'':'<span class="disc"></span>'}${withTags?`<div class="tags">${tags.join('')}</div>`:''}${d.capa?'':`<div class="bn">${esc(d.banda)}</div><div class="an">${esc(d.album)}</div>`}</div>`;
