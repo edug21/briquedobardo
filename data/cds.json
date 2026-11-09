@@ -1536,7 +1536,8 @@
     "obs": "",
     "preco": 80.0,
     "reservado": false,
-    "id": 77
+    "id": 77,
+    "capa": "assets/capas/gamma-ray-tribute-to-the-past.webp"
   },
   {
     "banda": "Glory Opera",
@@ -1575,7 +1576,8 @@
     "obs": "Encarte Japonês / Sem OBI",
     "preco": 80.0,
     "reservado": false,
-    "id": 79
+    "id": 79,
+    "capa": "assets/capas/grave-digger-the-reaper.webp"
   },
   {
     "banda": "Hammerfall",
