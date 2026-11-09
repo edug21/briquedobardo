@@ -1794,7 +1794,8 @@
     "obs": "Poster",
     "preco": 70.0,
     "reservado": false,
-    "id": 90
+    "id": 90,
+    "capa": "assets/capas/in-flames-whoracle.webp"
   },
   {
     "banda": "In Flames",
@@ -1813,7 +1814,8 @@
     "obs": "Encarte Japonês, OBI",
     "preco": 70.0,
     "reservado": false,
-    "id": 91
+    "id": 91,
+    "capa": "assets/capas/in-flames-sountrack-to-your-scape.webp"
   },
   {
     "banda": "In Flames",
@@ -1832,7 +1834,8 @@
     "obs": "Digisleeve, Slipcase, CD+DVD",
     "preco": 60.0,
     "reservado": false,
-    "id": 92
+    "id": 92,
+    "capa": "assets/capas/in-flames-a-sense-of-purpose.webp"
   },
   {
     "banda": "Iron Fire",
@@ -1851,7 +1854,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 93
+    "id": 93,
+    "capa": "assets/capas/iron-fire-thunderstorm.webp"
   },
   {
     "banda": "Iron Maiden",
@@ -1870,7 +1874,8 @@
     "obs": "Enhanced",
     "preco": 25.0,
     "reservado": false,
-    "id": 94
+    "id": 94,
+    "capa": "assets/capas/iron-maiden-killers.webp"
   },
   {
     "banda": "Iron Maiden",
@@ -1889,7 +1894,8 @@
     "obs": "Enhanced",
     "preco": 25.0,
     "reservado": false,
-    "id": 95
+    "id": 95,
+    "capa": "assets/capas/iron-maiden-seventh-son-of-a-seventh-son.webp"
   },
   {
     "banda": "Iron Maiden",
@@ -1908,7 +1914,8 @@
     "obs": "Enhanced",
     "preco": 25.0,
     "reservado": false,
-    "id": 96
+    "id": 96,
+    "capa": "assets/capas/iron-maiden-seventh-son-of-a-seventh-son.webp"
   },
   {
     "banda": "Judas Priest",
@@ -1927,7 +1934,8 @@
     "obs": "",
     "preco": 40.0,
     "reservado": false,
-    "id": 97
+    "id": 97,
+    "capa": "assets/capas/judas-priest-live-vengeance-82.webp"
   },
   {
     "banda": "Kamelot",
@@ -1946,7 +1954,8 @@
     "obs": "",
     "preco": 90.0,
     "reservado": false,
-    "id": 98
+    "id": 98,
+    "capa": "assets/capas/kamelot-dominion.webp"
   },
   {
     "banda": "Kamelot",
@@ -1965,7 +1974,8 @@
     "obs": "",
     "preco": 90.0,
     "reservado": false,
-    "id": 99
+    "id": 99,
+    "capa": "assets/capas/kamelot-eternity.webp"
   },
   {
     "banda": "Kamelot",
@@ -1984,7 +1994,8 @@
     "obs": "",
     "preco": 40.0,
     "reservado": false,
-    "id": 100
+    "id": 100,
+    "capa": "assets/capas/kamelot-the-black-halo.webp"
   },
   {
     "banda": "Keep Of Kalessin",
@@ -2003,7 +2014,8 @@
     "obs": "Encarte contém furos de furador.",
     "preco": 10.0,
     "reservado": false,
-    "id": 101
+    "id": 101,
+    "capa": "assets/capas/keep-of-kalessin-kolossus.webp"
   },
   {
     "banda": "Korn",
@@ -2022,7 +2034,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 102
+    "id": 102,
+    "capa": "assets/capas/korn-follow-the-leader.webp"
   },
   {
     "banda": "Korn",
@@ -2041,7 +2054,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 103
+    "id": 103,
+    "capa": "assets/capas/korn-life-is-peachy.webp"
   },
   {
     "banda": "Kreator",
@@ -2060,7 +2074,8 @@
     "obs": "",
     "preco": 40.0,
     "reservado": false,
-    "id": 104
+    "id": 104,
+    "capa": "assets/capas/kreator-live-kreation-revisioned-glory.webp"
   },
   {
     "banda": "Lei Seca",
@@ -2079,7 +2094,8 @@
     "obs": "Lacrado",
     "preco": 10.0,
     "reservado": false,
-    "id": 105
+    "id": 105,
+    "capa": "assets/capas/lei-seca-lei-seca.webp"
   },
   {
     "banda": "Luca Turilli",
@@ -2098,7 +2114,8 @@
     "obs": "CD + DVD",
     "preco": 60.0,
     "reservado": false,
-    "id": 106
+    "id": 106,
+    "capa": "assets/capas/luca-turilli-ascending-to-infinity.webp"
   },
   {
     "banda": "Mad Old Lady",
@@ -2117,7 +2134,8 @@
     "obs": "",
     "preco": 10.0,
     "reservado": false,
-    "id": 107
+    "id": 107,
+    "capa": "assets/capas/mad-old-lady-viking-soul.webp"
   },
   {
     "banda": "Manegarm",
@@ -2136,7 +2154,8 @@
     "obs": "Lacrado",
     "preco": 30.0,
     "reservado": false,
-    "id": 108
+    "id": 108,
+    "capa": "assets/capas/manegarm-fornaldarsagor.webp"
   },
   {
     "banda": "Messenger",
@@ -2155,7 +2174,8 @@
     "obs": "Unofficial",
     "preco": 30.0,
     "reservado": false,
-    "id": 109
+    "id": 109,
+    "capa": "assets/capas/messenger-star-wolf-pt-1-the-messengers.webp"
   },
   {
     "banda": "Messenger",
@@ -2174,7 +2194,8 @@
     "obs": "Unofficial",
     "preco": 30.0,
     "reservado": false,
-    "id": 110
+    "id": 110,
+    "capa": "assets/capas/messenger-star-wolf-pt-2-novastorm.webp"
   },
   {
     "banda": "Metallica",
@@ -2193,7 +2214,8 @@
     "obs": "Single",
     "preco": 60.0,
     "reservado": false,
-    "id": 111
+    "id": 111,
+    "capa": "assets/capas/metallica-the-unforgiven-ii-cd-single.webp"
   },
   {
     "banda": "Metallica",
@@ -2212,7 +2234,8 @@
     "obs": "",
     "preco": 70.0,
     "reservado": false,
-    "id": 112
+    "id": 112,
+    "capa": "assets/capas/metallica-master-of-puppets.webp"
   },
   {
     "banda": "Nostradameus",
@@ -2231,7 +2254,8 @@
     "obs": "",
     "preco": 15.0,
     "reservado": false,
-    "id": 113
+    "id": 113,
+    "capa": "assets/capas/nostradameus-the-third-prophecy.webp"
   },
   {
     "banda": "Opera Diabolicus",
@@ -2250,7 +2274,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 114
+    "id": 114,
+    "capa": "assets/capas/opera-diabolicus-death-on-a-pale-horse.webp"
   },
   {
     "banda": "Pathfinder",
@@ -2269,7 +2294,8 @@
     "obs": "",
     "preco": 100.0,
     "reservado": false,
-    "id": 115
+    "id": 115,
+    "capa": "assets/capas/pathfinder-beyond-the-space-beyond-the-time.webp"
   },
   {
     "banda": "Rage",
