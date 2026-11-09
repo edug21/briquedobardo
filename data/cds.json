@@ -1296,7 +1296,8 @@
     "obs": "Encarte com marcas. Mídia com marcas",
     "preco": 10.0,
     "reservado": false,
-    "id": 65
+    "id": 65,
+    "capa": "assets/capas/edguy-hellfire-club.webp"
   },
   {
     "banda": "Edguy",
@@ -1315,7 +1316,8 @@
     "obs": "Encarte Japonês / Sem OBI",
     "preco": 80.0,
     "reservado": false,
-    "id": 66
+    "id": 66,
+    "capa": "assets/capas/edguy-hellfire-club.webp"
   },
   {
     "banda": "Eluveitie",
@@ -1334,7 +1336,8 @@
     "obs": "",
     "preco": 80.0,
     "reservado": false,
-    "id": 67
+    "id": 67,
+    "capa": "assets/capas/eluveitie-origins.webp"
   },
   {
     "banda": "Elvenking",
@@ -1353,7 +1356,8 @@
     "obs": "",
     "preco": 80.0,
     "reservado": false,
-    "id": 68
+    "id": 68,
+    "capa": "assets/capas/elvenking-wyrd.webp"
   },
   {
     "banda": "Elvenking",
@@ -1372,7 +1376,8 @@
     "obs": "",
     "preco": 120.0,
     "reservado": false,
-    "id": 69
+    "id": 69,
+    "capa": "assets/capas/elvenking-the-pagan-manifesto.webp"
   },
   {
     "banda": "Elvenking",
@@ -1391,7 +1396,8 @@
     "obs": "",
     "preco": 30.0,
     "reservado": false,
-    "id": 70
+    "id": 70,
+    "capa": "assets/capas/elvenking-reader-of-the-runes-divination.webp"
   },
   {
     "banda": "Eterna",
@@ -1410,7 +1416,8 @@
     "obs": "",
     "preco": 50.0,
     "reservado": false,
-    "id": 71
+    "id": 71,
+    "capa": "assets/capas/eterna-papyrus.webp"
   },
   {
     "banda": "Falconer",
