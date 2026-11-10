@@ -398,7 +398,7 @@ function openItem(id){
       <dt>Lançamento</dt><dd>${d.ano??'—'}${d.anoVersao&&d.anoVersao!==d.ano?` · esta edição de ${d.anoVersao}`:''}</dd>
       <dt>Estilo</dt><dd>${esc(d.estilo)}</dd>
       <dt>País da banda</dt><dd>${esc(d.pais)}</dd>
-      <dt>Versão</dt><dd>${esc(d.versao)} · prensagem ${esc(d.origem||'não informada')}</dd>
+      <dt>Versão</dt><dd>${esc(d.versao)} · prensagem ${esc(d.origem||'não informada')}${d.notaVersao?` · ${esc(d.notaVersao)}`:''}</dd>
       <dt>Gravadora</dt><dd>${esc(d.gravadora)}</dd>
       <dt>Formato</dt><dd>${esc(d.tipo)} · ${esc(d.qtde)}${discos[d.qtde]>1?` (${discos[d.qtde]} discos)`:''}</dd>
       <dt>Encarte</dt><dd>${grade(d.encarte)}</dd>

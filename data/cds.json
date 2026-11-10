@@ -454,10 +454,11 @@
     "encarte": "Excelente",
     "midia": "Excelente",
     "obs": "Sleeve",
-    "preco": 30.0,
+    "preco": 15.0,
     "reservado": false,
     "id": 23,
-    "capa": "assets/capas/avenged-sevenfold-waking-the-fallen.webp"
+    "capa": "assets/capas/avenged-sevenfold-waking-the-fallen.webp",
+    "notaVersao": "Não Oficial"
   },
   {
     "banda": "Avenged Sevenfold",

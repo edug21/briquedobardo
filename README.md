@@ -21,7 +21,7 @@ assets/             fonte Plakat Fraktur do título (woff2 embutido no index.htm
 2. Rode `python3 build.py`.
 3. Faça commit de `data/cds.json` e `index.html`.
 
-Campos de cada item: `banda`, `album`, `ano`, `anoVersao`, `estilo`, `pais`, `versao` (Nacional/Importado), `origem`, `gravadora`, `tipo`, `qtde` (Simples/Duplo/Triplo), `encarte`, `midia`, `obs`, `preco` (número; `0` aparece como "Sob consulta"), `reservado` (`true` bloqueia a compra), `capa` (opcional, caminho da imagem).
+Campos de cada item: `banda`, `album`, `ano`, `anoVersao`, `estilo`, `pais`, `versao` (Nacional/Importado), `origem`, `gravadora`, `tipo`, `qtde` (Simples/Duplo/Triplo), `encarte`, `midia`, `obs`, `preco` (número; `0` aparece como "Sob consulta"), `reservado` (`true` bloqueia a compra), `notaVersao` (opcional, aparece depois da prensagem, ex.: "Não Oficial"), `capa` (opcional, caminho da imagem).
 
 ## Capas
 
