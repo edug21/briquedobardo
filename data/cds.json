@@ -240,26 +240,6 @@
     "capa": "assets/capas/angra-holy-land.webp"
   },
   {
-    "banda": "Angra",
-    "album": "Hunters and Prey",
-    "ano": 2002,
-    "anoVersao": 2002,
-    "estilo": "Power Metal",
-    "pais": "Brasil",
-    "versao": "Importado",
-    "origem": "Japão",
-    "gravadora": "Victor",
-    "tipo": "Jewelcase",
-    "qtde": "Simples",
-    "encarte": "Ótimo",
-    "midia": "Ótimo",
-    "obs": "Encarte Japonês / Encarte de Fotos / Encarte com marcas",
-    "preco": 80.0,
-    "reservado": false,
-    "id": 13,
-    "capa": "assets/capas/angra-hunters-and-prey.webp"
-  },
-  {
     "banda": "Anthrax",
     "album": "We've Come For You All",
     "ano": 2003,
@@ -1675,7 +1655,7 @@
     "encarte": "Excelente",
     "midia": "Excelente",
     "obs": "",
-    "preco": 220.0,
+    "preco": 250.0,
     "reservado": false,
     "id": 84,
     "capa": "assets/capas/helloween-keeper-of-the-seven-keys-part-1-part-2.webp"
@@ -1699,26 +1679,6 @@
     "reservado": false,
     "id": 85,
     "capa": "assets/capas/helloween-the-best-the-rest-the-rare.webp"
-  },
-  {
-    "banda": "Helloween",
-    "album": "The Time Of The Oath",
-    "ano": 1996,
-    "anoVersao": 1996,
-    "estilo": "Power Metal",
-    "pais": "Alemanha",
-    "versao": "Importado",
-    "origem": "Japão",
-    "gravadora": "Victor",
-    "tipo": "Jewelcase",
-    "qtde": "Simples",
-    "encarte": "Excelente",
-    "midia": "Excelente",
-    "obs": "Encarte Japonês",
-    "preco": 80.0,
-    "reservado": false,
-    "id": 86,
-    "capa": "assets/capas/helloween-the-time-of-the-oath.webp"
   },
   {
     "banda": "Helloween",
